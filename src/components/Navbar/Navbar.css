@@ -1,0 +1,84 @@
+.header {
+  background-color: white;
+  color: white;
+  padding-bottom: 10px;
+  font-family: 'Segoe UI', sans-serif;
+
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.college-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f10707d1;
+}
+
+.subtext {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: normal;
+  
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:white;
+  padding: 10px 20px;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 10px 20px;
+  margin-left: 100px;
+  
+}
+
+.nav-links li a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: background 0.3s ease;
+}
+
+.nav-links li a:hover {
+ color: #a60202;
+  border-radius: 4px;
+}
+
+
+/* @media (max-width:100px){
+  .nav-links{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+}  */
+
+
+
