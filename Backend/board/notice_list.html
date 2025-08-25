@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notices</title>
+</head>
+<body>
+    <h1>College Notices</h1>
+    <ul>
+        {% for notice in notices %}
+            <li>{{ notice.title }} - {{ notice.description }}</li>
+        {% empty %}
+            <li>No notices yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

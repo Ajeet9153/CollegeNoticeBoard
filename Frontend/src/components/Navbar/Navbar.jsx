@@ -20,6 +20,7 @@ const Navbar = () =>{
           <li><a href="#">ACADEMICS</a></li>
           <li><a href="#">LIBRARY</a></li>
           <li><a href="#">ADMISSION</a></li>
+         
       
         </ul>
         

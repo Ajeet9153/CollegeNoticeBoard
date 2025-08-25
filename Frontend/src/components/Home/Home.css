@@ -2,13 +2,12 @@
 .container {
   display: flex;
   background-color: #f7f7f7;
-  min-height: 100vh;
+  
   font-family: Arial, sans-serif;
   flex: 1;
   padding: 0;
   margin-top: 200px;
     
-
 }
 
 .sidebar {
@@ -121,17 +120,4 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s ease;
-}
-
-.read-more:hover {
-  background-color: #c0392b;
-}
-
-.arrow {
-  margin-left: 5px;
-}
-
-.posted-date {
-  font-size: 0.85rem;
-  color: #7f8c8d;
 }
