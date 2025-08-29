@@ -1,168 +1,3 @@
-// import React, { useState ,useEffect} from 'react';
-// import './Home.css';
-
-// const API_BASE = "http://127.0.0.1:8000";
-// useEffect(() => {
-//   fetch(`${API_BASE}/notices/`)
-//     .then(res => res.json())
-//     .then(data => setNotices(data))
-//     .catch(err => console.error(err));
-// }, []);
-
-// fetch(`${API_BASE}/notices/create/`, {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//     "Authorization": `Bearer ${token}`, // JWT token if used
-//   },
-//   body: JSON.stringify({
-//     title: "Your Title",
-//     content: "Your Content"
-//   })
-// });
-
-// const initialNotices = [
-//   { title: "Semester Exam Results Published", date: "2025-07-28" },
-//   { title: "Admission Open for 2025", date: "2025-07-15" },
-//   {description: "Detailed schedule and instructions for the Physical Education practical exams..."
-//   },
-//   // ... existing notices
-// ];
-// const notices = [
-//   ...initialNotices,
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "Campus Cleanliness Drive", date: "2025-07-27" },
-//   { title: "Cultural Fest Announced", date: "2025-07-30" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "Campus Cleanliness Drive", date: "2025-07-27" },
-//   { title: "Cultural Fest Announced", date: "2025-07-30" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "Campus Cleanliness Drive", date: "2025-07-27" },
-//   { title: "Cultural Fest Announced", date: "2025-07-30" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "Campus Cleanliness Drive", date: "2025-07-27" },
-//   { title: "Cultural Fest Announced", date: "2025-07-30" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "Campus Cleanliness Drive", date: "2025-07-27" },
-//   { title: "Cultural Fest Announced", date: "2025-07-30" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "Campus Cleanliness Drive", date: "2025-07-27" },
-//   { title: "Cultural Fest Announced", date: "2025-07-30" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "Campus Cleanliness Drive", date: "2025-07-27" },
-//   { title: "Cultural Fest Announced", date: "2025-07-30" },
-//   { title: "New Library Timings", date: "2025-07-20" },
-//   { title: "Sports Day Scheduled", date: "2025-07-22" },
-//   { title: "Guest Lecture on AI", date: "2025-07-25" },
-//   { title: "Campus Cleanliness Drive", date: "2025-07-27" },
-//   { title: "Cultural Fest Announced", date: "2025-07-30" },
-// ];
-
-// const navItems = [
-//   "Notices", 
-//   "Students' Grievance",  
-//   "Important Links","Syllabus", "Contact Us"
-// ];
-
-// const Home = () => {
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const noticesPerPage = 10;
-//   const indexOfLastNotice = currentPage * noticesPerPage;
-//   const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
-//   const currentNotices = notices.slice(indexOfFirstNotice, indexOfLastNotice);
-
-//   return (
-//     <div className="container">
-//       {/* Sidebar */}
-//       <aside className="sidebar">
-//         <h2>Navigation</h2>
-//         <ul className="nav-list">
-//           {navItems.map((item, index) => (
-//             <li
-//               key={index}
-//               className={item === "Notice Board" ? "active" : ""}
-//             >
-//               {item}
-//             </li>
-//           ))}
-//         </ul>
-//       </aside>
-
-//       {/* Notice Area */}
-//       <main className="notice-section">
-//         <div className="notice-header">
-//           <h1>Notice Board</h1>
-//           <div className="pagination">
-//             Pages: 
-//             <span 
-//               className={`page ${currentPage === 1 ? 'active' : ''}`} 
-//               onClick={() => setCurrentPage(1)}
-//             >
-//               1
-//             </span>
-//             <span 
-//               className={`page ${currentPage === 2 ? 'active' : ''}`} 
-//               onClick={() => setCurrentPage(2)}
-//             >
-//               2
-//             </span>
-//             <span 
-//               className={`page ${currentPage === 3 ? 'active' : ''}`} 
-//               onClick={() => setCurrentPage(3)}
-//             >
-//               3
-//             </span>
-//             <span 
-//               className="page" 
-//               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(notices.length / noticesPerPage)))}
-//             >
-//               »
-//             </span>
-            
-//           </div>
-//         </div>
-
-//         {currentNotices.map((notice, index) => (
-//           <div className="notice-card" key={index}>
-//             <div className="notice-title">{notice.title}</div>
-//             <div className="notice-tag">Notice</div>
-//             <div className="notice-footer">
-//               <button className="read-more">
-//                 Read More <span className="arrow">➡️</span>
-//               </button>
-//               <div className="posted-date">
-//                 Posted on : {notice.date}
-//               </div>
-//             </div>
-//           </div>
-//         ))}
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 
 import React, { useState, useEffect } from 'react';
 import './Home.css';
@@ -170,9 +5,9 @@ import './Home.css';
 const API_BASE = "http://127.0.0.1:8000"; // Django backend URL
 
 const navItems = [
-  "Notices", 
-  "Students' Grievance",  
-  "Important Links","Syllabus", "Contact Us"
+  "Notices",
+  "Students' Grievance",
+  "Important Links", "Syllabus", "Contact Us"
 ];
 
 const Home = () => {
@@ -180,15 +15,18 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch(`${API_BASE}/notices/`)
+    fetch(`${API_BASE}/api/notices/`)            // <-- updated endpoint
       .then(res => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
       })
       .then(data => {
-        // Make sure backend returns an array
+        console.log("API Response (notices):", data);
         if (Array.isArray(data)) {
           setNotices(data);
+        } else if (Array.isArray(data.results)) {
+          // in case a paginated response is returned
+          setNotices(data.results);
         } else {
           console.error("Unexpected API format:", data);
         }
@@ -208,10 +46,7 @@ const Home = () => {
         <h2>Navigation</h2>
         <ul className="nav-list">
           {navItems.map((item, index) => (
-            <li
-              key={index}
-              className={item === "Notice Board" ? "active" : ""}
-            >
+            <li key={index} className={item === "Notice Board" ? "active" : ""}>
               {item}
             </li>
           ))}
@@ -223,8 +58,8 @@ const Home = () => {
         <div className="notice-header">
           <h1>Notice Board</h1>
           <div className="pagination">
-            Pages: 
-            {Array.from({ length: Math.ceil(notices.length / noticesPerPage) }, (_, i) => (
+            Pages:
+            {Array.from({ length: Math.max(1, Math.ceil(notices.length / noticesPerPage)) }, (_, i) => (
               <span
                 key={i}
                 className={`page ${currentPage === i + 1 ? 'active' : ''}`}
@@ -236,20 +71,25 @@ const Home = () => {
           </div>
         </div>
 
-        {currentNotices.map((notice, index) => (
-          <div className="notice-card" key={index}>
-            <div className="notice-title">{notice.title}</div>
-            <div className="notice-tag">Notice</div>
-            <div className="notice-footer">
-              <button className="read-more">
-                Read More <span className="arrow">➡️</span>
-              </button>
-              <div className="posted-date">
-                Posted on : {notice.date}
+        {currentNotices.length === 0 ? (
+          <p>No notices available</p>
+        ) : (
+          currentNotices.map((notice) => (
+            <div className="notice-card" key={notice.id}>
+              <div className="notice-title">{notice.title}</div>
+              <div className="notice-tag">Notice</div>
+              <div className="notice-body">{notice.message}</div>
+              <div className="notice-footer">
+                <button className="read-more">
+                  Read More <span className="arrow">➡️</span>
+                </button>
+                <div className="posted-date">
+                  Posted on : {new Date(notice.created_at).toLocaleString()}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </main>
     </div>
   );
