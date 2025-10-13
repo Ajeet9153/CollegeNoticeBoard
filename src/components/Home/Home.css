@@ -6,23 +6,16 @@
   font-family: Arial, sans-serif;
   flex: 1;
   padding: 0;
-  margin-top: 10px;
+  margin-top: 50px;
+  margin-bottom: 100px;
     
 }
-
 .sidebar {
   width: 250px;
   background-color: #f3f2ed;
   padding: 1.5rem 1rem;
-  border-right: 1px solid #ddd;
-}
-
-.sidebar h2 {
-  color: #f39c12;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #f39c12;
-  display: inline-block;
+  border-radius: 12px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .nav-list {
@@ -31,6 +24,26 @@
   margin: 0;
 }
 
+.sidebar-link {
+  display: block;
+  text-decoration: none; /* Removes underline */
+  color: #333; /* Neutral dark gray instead of blue */
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-item {
+  margin-bottom: 12px;
+}
+
+.sidebar-link:hover {
+  background-color: #a60202; /* Nice CUSAT blue fill */
+  color: #fff; /* Text turns white */
+  transform: translateX(4px);
+}
 .nav-list li {
   padding: 0.8rem 1rem;
   margin: 0.2rem 0;
@@ -79,7 +92,7 @@
 }
 
 .page.active {
-  background-color: #0984e3;
+  background-color: #a60202;
   color: white;
 }
 
@@ -112,7 +125,7 @@
 }
 
 .read-more {
-  background-color: #e74c3c;
+  background-color: #a60202;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -120,4 +133,36 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s ease;
+}
+
+
+
+
+
+
+
+.sub-nav {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 6px;
+}
+
+.sub-nav .sidebar-link {
+  background: #fafafa;
+  color: #555;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.sub-nav .sidebar-link:hover {
+  background-color: #a60202;
+  color: #fff;
+}
+
+/* Optional: Highlight current page */
+.sidebar-link.active {
+  background-color: #a60202;
+  color: #fff;
+  font-weight: 600;
 }

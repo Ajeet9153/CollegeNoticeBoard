@@ -1,7 +1,7 @@
 import React from "react";
-import "./Academics.css";
+import "./Academic.css";
 
-const Academics = () => {
+const Academic = () => {
   return (
     <div className="academics-container">
       <h1>Academics</h1>
@@ -17,4 +17,4 @@ const Academics = () => {
   );
 };
 
-export default Academics;
+export default Academic;

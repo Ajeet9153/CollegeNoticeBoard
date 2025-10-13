@@ -17,9 +17,9 @@ const Navbar = () =>{
 
       <ul className="nav-links">
         <li><Link to="/">HOME</Link></li>
-        <li><a href="#">ACADEMICS</a></li>
-        <li><a href="#">LIBRARY</a></li>
-        <li><a href="#">ADMISSION</a></li>
+        <li><a href="/academic">ACADEMIC</a></li>
+        <li><a href="/library">LIBRARY</a></li>
+        <li><a href="/admission">ADMISSION</a></li>
         <li><Link to="/login">LOGIN</Link></li> {/* ✅ Correct */}
       </ul>
     </nav>

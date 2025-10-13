@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // <-- import Link
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const API_BASE = "http://127.0.0.1:8000"; // Django backend URL
@@ -12,11 +12,25 @@ const navItems = [
   { name: "Library", path: "/library" },
   { name: "Admission", path: "/admission" },
   { name: "Contact Us", path: "/contact" },
+  { name: "Academic", path: "/academic" },
+  {
+    name: "Notification",
+    subItems: [
+      { name: "SMS", url: "sms:" }, // Opens default SMS app
+      { name: "Email", url: "mailto:" }, // Opens default email client
+      { name: "WhatsApp", url: "https://wa.me/" }, // Opens WhatsApp
+
+      
+    ],
+    },
+    
+  
 ];
 
 const Home = () => {
   const [notices, setNotices] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [openSubMenu, setOpenSubMenu] = useState(null);
 
   useEffect(() => {
     fetch(`${API_BASE}/api/notices/`)
@@ -41,6 +55,10 @@ const Home = () => {
   const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
   const currentNotices = notices.slice(indexOfFirstNotice, indexOfLastNotice);
 
+  const toggleSubMenu = (name) => {
+    setOpenSubMenu(openSubMenu === name ? null : name);
+  };
+
   return (
     <div className="container">
       {/* Sidebar */}
@@ -48,10 +66,37 @@ const Home = () => {
         <h2>Navigation</h2>
         <ul className="nav-list">
           {navItems.map((item, index) => (
-            <li key={index}>
-              <Link to={item.path} className="sidebar-link">
-                {item.name}
-              </Link>
+            <li key={index} className="nav-item">
+              {item.subItems ? (
+                <>
+                  <span
+                    className="sidebar-link"
+                    onClick={() => toggleSubMenu(item.name)}
+                  >
+                    {item.name} {openSubMenu === item.name ? '▲' : '▼'}
+                  </span>
+                  {openSubMenu === item.name && (
+                    <ul className="sub-nav">
+                      {item.subItems.map((sub, subIndex) => (
+                        <li key={subIndex}>
+                          <a
+                            href={sub.url}
+                            className="sidebar-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {sub.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <Link to={item.path} className="sidebar-link">
+                  {item.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
