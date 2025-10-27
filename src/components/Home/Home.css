@@ -1,21 +1,29 @@
-/* styles/Home.css */
+/* ===============================
+   NOTICE BOARD PAGE (Responsive)
+   =============================== */
+
 .container {
   display: flex;
   background-color: #f7f7f7;
-  
   font-family: Arial, sans-serif;
   flex: 1;
-  padding: 0;
-  margin-top: 50px;
+  padding: 5px;
+  margin-top: 15px;
   margin-bottom: 100px;
-    
+  border-radius: 30px;
+  gap: 1rem;
+  transition: all 0.3s ease;
 }
+
+/* Sidebar */
 .sidebar {
   width: 250px;
   background-color: #f3f2ed;
   padding: 1.5rem 1rem;
-  border-radius: 12px;
+  border-radius: 50px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.05);
+  color: #a04935;
+  flex-shrink: 0;
 }
 
 .nav-list {
@@ -26,8 +34,8 @@
 
 .sidebar-link {
   display: block;
-  text-decoration: none; /* Removes underline */
-  color: #333; /* Neutral dark gray instead of blue */
+  text-decoration: none;
+  color: #333;
   font-weight: 500;
   font-size: 1rem;
   padding: 10px 15px;
@@ -40,10 +48,11 @@
 }
 
 .sidebar-link:hover {
-  background-color: #a60202; /* Nice CUSAT blue fill */
-  color: #fff; /* Text turns white */
+  background-color: #a60202;
+  color: #fff;
   transform: translateX(4px);
 }
+
 .nav-list li {
   padding: 0.8rem 1rem;
   margin: 0.2rem 0;
@@ -60,49 +69,77 @@
   font-weight: bold;
 }
 
+/* Main Notice Section */
 .notice-section {
   flex: 1;
   padding: 2rem;
   background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .notice-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: .5px;
+  padding: 2px;
 }
 
 .notice-header h1 {
   font-size: 2rem;
-  color: #2d3436;
+  color: #a04935;
 }
 
+/* Pagination Styles */
 .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
   font-size: 0.9rem;
   color: #555;
 }
 
 .page {
   display: inline-block;
-  margin-left: 5px;
-  padding: 3px 8px;
-  background-color: #dfe6e9;
-  border-radius: 3px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
   cursor: pointer;
+  background-color: #f1f2f6;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.page:hover {
+  background-color: #a60202;
+  color: #fff;
+  border-color: #a60202;
 }
 
 .page.active {
   background-color: #a60202;
-  color: white;
+  color: #fff;
+  border-color: #a60202;
 }
 
+/* Notice Cards */
 .notice-card {
   border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 1rem;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
   margin-top: 1.2rem;
   background-color: #f9f9f9;
   box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+}
+
+.notice-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .notice-title {
@@ -130,17 +167,18 @@
   padding: 0.5rem 1rem;
   border: none;
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.5s ease;
+  width: 100%;
+  max-width: 600px;
 }
 
+.read-more:hover {
+  background-color: #7a0101;
+}
 
-
-
-
-
-
+/* Sub Navigation */
 .sub-nav {
   list-style: none;
   padding-left: 1rem;
@@ -160,9 +198,156 @@
   color: #fff;
 }
 
-/* Optional: Highlight current page */
+/* Notification Panel */
+.notification-panel {
+  margin-top: 10px;
+  padding: 10px;
+  background: #eef4ff;
+  border-left: 4px solid #007bff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.notif-btn {
+  display: block;
+  background: white;
+  border: 1px solid #007bff;
+  color: #007bff;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.notif-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+/* Active Sidebar Link */
 .sidebar-link.active {
   background-color: #a60202;
   color: #fff;
   font-weight: 600;
+}
+
+/* Slide Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================================
+   RESPONSIVE MEDIA QUERIES
+   ================================== */
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .sidebar-link {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+
+  .notice-section {
+    padding: 1.5rem;
+  }
+
+  .notice-header h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Mobile Devices (≤768px) */
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+    padding: 0.5rem;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .notice-section {
+    padding: 1rem;
+  }
+
+  .notice-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notice-header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .notice-card {
+    padding: 0.8rem;
+  }
+
+  .read-more {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .pagination {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+}
+
+/* Small Mobile (≤480px) */
+@media (max-width: 480px) {
+  .sidebar-link {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .notice-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .notice-card {
+    border-radius: 10px;
+  }
+
+  .read-more {
+    padding: 0.4rem 0.8rem;
+  }
 }

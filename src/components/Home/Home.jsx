@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './Home.css';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Home.css";
 
-const API_BASE = "http://127.0.0.1:8000"; // Django backend URL
+const API_BASE = "http://127.0.0.1:8000";
 
 const navItems = [
   { name: "Notices", path: "/notice" },
@@ -16,15 +16,11 @@ const navItems = [
   {
     name: "Notification",
     subItems: [
-      { name: "SMS", url: "sms:" }, // Opens default SMS app
-      { name: "Email", url: "mailto:" }, // Opens default email client
-      { name: "WhatsApp", url: "https://wa.me/" }, // Opens WhatsApp
-
-      
+      { name: "SMS", url: "sms:" },
+      { name: "Email", url: "mailto:" },
+      { name: "WhatsApp", url: "https://wa.me/" },
     ],
-    },
-    
-  
+  },
 ];
 
 const Home = () => {
@@ -32,25 +28,19 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [openSubMenu, setOpenSubMenu] = useState(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetch(`${API_BASE}/api/notices/`)
-      .then(res => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setNotices(data);
+        else if (Array.isArray(data.results)) setNotices(data.results);
       })
-      .then(data => {
-        if (Array.isArray(data)) {
-          setNotices(data);
-        } else if (Array.isArray(data.results)) {
-          setNotices(data.results);
-        } else {
-          console.error("Unexpected API format:", data);
-        }
-      })
-      .catch(err => console.error("Error fetching notices:", err));
+      .catch((err) => console.error(err));
   }, []);
 
-  const noticesPerPage = 10;
+  const noticesPerPage = 6;
   const indexOfLastNotice = currentPage * noticesPerPage;
   const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
   const currentNotices = notices.slice(indexOfFirstNotice, indexOfLastNotice);
@@ -73,7 +63,7 @@ const Home = () => {
                     className="sidebar-link"
                     onClick={() => toggleSubMenu(item.name)}
                   >
-                    {item.name} {openSubMenu === item.name ? '▲' : '▼'}
+                    {item.name} {openSubMenu === item.name ? "▲" : "▼"}
                   </span>
                   {openSubMenu === item.name && (
                     <ul className="sub-nav">
@@ -108,10 +98,12 @@ const Home = () => {
           <h1>Notice Board</h1>
           <div className="pagination">
             Pages:
-            {Array.from({ length: Math.max(1, Math.ceil(notices.length / noticesPerPage)) }, (_, i) => (
+            {Array.from({
+              length: Math.max(1, Math.ceil(notices.length / noticesPerPage)),
+            }).map((_, i) => (
               <span
                 key={i}
-                className={`page ${currentPage === i + 1 ? 'active' : ''}`}
+                className={`page ${currentPage === i + 1 ? "active" : ""}`}
                 onClick={() => setCurrentPage(i + 1)}
               >
                 {i + 1}
@@ -128,10 +120,15 @@ const Home = () => {
               <div className="notice-title">{notice.title}</div>
               <div className="notice-tag">Notice</div>
               <div className="notice-body">{notice.message}</div>
+
               <div className="notice-footer">
-                <button className="read-more">
+                <button
+                  className="read-more"
+                  onClick={() => navigate(`/NoticeImagePage/${notice.id}`)}
+                >
                   Read More <span className="arrow">➡️</span>
                 </button>
+
                 <div className="posted-date">
                   Posted on : {new Date(notice.created_at).toLocaleString()}
                 </div>

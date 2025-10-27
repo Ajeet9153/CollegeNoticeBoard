@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext.jsx";
 import axios from "axios";
 import { assets } from "../../assets/assets";
-import "./LoginPopUp.css";
+import "./LoginPopup.css";
 
 const Login = () => {
   const { url, setToken } = useContext(StoreContext);
