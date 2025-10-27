@@ -1,0 +1,121 @@
+/* Library.css */
+
+.library-page-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #f3f4f6, #e8edf3);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.library-page-container:hover {
+  transform: translateY(-5px);
+}
+
+.library-page-container h1 {
+  font-size: 2.2rem;
+  color: #a60202;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.library-page-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.library-section h2 {
+  font-size: 1.7rem;
+  color: #a60202;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #a60202;
+  padding-bottom: 8px;
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.resource-item {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.resource-item:hover {
+  background: #1a3d7c;
+  transform: translateY(-5px);
+}
+
+.resource-item a h3 {
+  margin: 0 0 10px 0;
+  color: #a60202;
+  transition: color 0.3s ease;
+}
+
+.resource-item:hover a h3 {
+  color: #fff;
+}
+
+.resource-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.resource-item:hover p {
+  color: #e0e0e0;
+}
+
+.library-notes {
+  margin-top: 40px;
+}
+
+.library-notes h2 {
+  font-size: 1.5rem;
+  color: #a60202;
+  margin-bottom: 15px;
+}
+
+.library-notes ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.library-notes ul li {
+  margin-bottom: 10px;
+  font-size: 0.98rem;
+  color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .library-page-container {
+    padding: 25px;
+  }
+
+  .library-page-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .library-section h2, .library-notes h2 {
+    font-size: 1.3rem;
+  }
+
+  .resource-list {
+    grid-template-columns: 1fr;
+  }
+}
